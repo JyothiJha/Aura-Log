@@ -1,0 +1,88 @@
+.main {
+  display: flex;
+  /*background-color: brown;*/
+  height: 100vh;
+  align-items: center;
+  justify-content: center;
+}
+
+.login {
+  /*background-color: blueviolet;*/
+  width: 50%;
+  height: 30rem;
+  padding-left: 2rem;
+}
+
+form {
+  display: block;
+  height: 80%;
+  width: 90%;
+  padding-left: 10%;
+  /*background-color: coral;*/
+}
+
+input {
+  all: unset;
+  width: 80%;
+  height: 3rem;
+  margin: 0 0 1rem 0;
+  border: 2px solid black;
+  border-radius: 0.5rem;
+  padding-left: 0.5rem;
+  box-shadow: 0px 2px 6px 2px rgba(0, 0, 0, 0.2);
+}
+
+.logbtn {
+  height: 3rem;
+  width: 40%;
+  margin: 2rem 0 0 20%;
+  font-size: 1.1rem;
+  transition: 0.7s;
+  border: none;
+  border-radius: 0.5rem;
+  background-color: #bab3d7;
+  box-shadow: 0px 2px 6px 4px rgba(0, 0, 0, 0.2);
+}
+
+.logbtn:hover,
+.swapbtn:hover {
+  font-size: 1.5rem;
+  transition: 0.7s;
+  border-radius: 1rem;
+  box-shadow: 0px 4px 6px 4px rgba(0, 0, 0, 0.2);
+}
+
+.signup {
+  width: 50%;
+  height: 30rem;
+  padding: 2rem;
+}
+
+.slider {
+  position: absolute;
+  width: 50%;
+  height: 100vh;
+  transition: 0.7s ease;
+  align-items: center;
+  color: #fff;
+  background-image: url("../backgroundimg.jpg");
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  overflow: hidden;
+}
+
+.slidertitle {
+  margin-top: 14rem;
+  font-size: 4rem;
+}
+
+.swapbtn {
+  height: 3rem;
+  width: 40%;
+  font-size: 1.1rem;
+  transition: 0.7s;
+  border: none;
+  border-radius: 0.5rem;
+  background-color: #a37cf0;
+  box-shadow: 0px 2px 6px 4px rgba(0, 0, 0, 0.2);
+}
