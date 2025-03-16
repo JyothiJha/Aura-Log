@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Circle, Linear } from "rc-progress";
 import styles from "./Dashboard.module.css";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
+import { Link } from "react-router-dom";
 
 function Dashboard() {
   const [currentPage, setCurrentPage] = useState("Home");
@@ -123,7 +124,8 @@ function Dashboard() {
         >
           Share a Thought
         </button>
-        <button className={styles.navbtn}>Signout</button>
+        <Link to="/"><button className={styles.navbtn}>Signout</button></Link>
+        
       </div>
       <div>{renderContent()}</div>
     </div>

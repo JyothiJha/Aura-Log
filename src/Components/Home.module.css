@@ -29,38 +29,26 @@
 }
 
 .welcome {
-  font-size: 5rem;
+  font-size: 7rem;
   color: white;
 }
+
 h2 {
   font-size: 1.7rem;
   color: #333000;
-}
-h3 {
-  font-size: 1.2rem;
 }
 
 .startbtn {
   all: unset;
   border-radius: 2rem;
+  margin-top: 4rem;
   height: 3rem;
   width: 40%;
-  background-color: #a37cf0;
+  background-color: #468eec;
   font-size: 1.5rem;
   box-shadow: 0px 2px 6px 4px rgba(0, 0, 0, 0.2);
 }
 
 .content {
-  padding: 0 4rem;
-}
-
-.mainsplit {
-  display: flex;
-  width: 80%;
-  justify-content: space-between;
-  padding: 0%;
-}
-.split {
-  padding: 2rem;
-  align-items: flex-start;
+  padding: 0 6rem;
 }

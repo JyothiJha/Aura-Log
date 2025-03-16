@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import styles from "./Login.module.css";
+import HomeIcon from "@mui/icons-material/Home";
+import { Link } from "react-router-dom";
 
 function MovingDiv() {
   const [movingRight, setMovingRight] = useState(true);
@@ -26,7 +28,8 @@ function MovingDiv() {
           <br />
           <a href="">Forgot Password?</a>
           <br />
-          <button className={styles.logbtn}>Login</button>
+          <Link to="/dashboard"> <button className={styles.logbtn}>Login</button> </Link>
+         
         </form>
       </div>
       <div className={styles.signup}>
@@ -48,9 +51,18 @@ function MovingDiv() {
         className={styles.slider}
         id="movingDiv"
         style={{
-          left: movingRight ? "0" : "50%",
+          left: movingRight ? "50%" : "0%",
         }}
       >
+        <Link to="/">
+        <HomeIcon 
+          style={{
+            color: "black",
+            width: "3rem",
+            height: "3rem",
+            margin: "1rem",
+          }}
+        /></Link>
         <center>
           <h1 className={styles.slidertitle}>Hello, Welcome!</h1>
           <h1>{movingRight ? "Login" : "Signup"} now </h1>
@@ -61,7 +73,7 @@ function MovingDiv() {
               : "Do you have an existing account?"}
           </p>
           <button className={styles.swapbtn} onClick={togglePosition}>
-            {movingRight ? "Login" : "Signup"}
+            {movingRight ? "Signup" : "Login"}
           </button>
         </center>
       </div>
