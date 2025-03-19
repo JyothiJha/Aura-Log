@@ -1,13 +1,11 @@
 .main {
   display: flex;
-  /*background-color: brown;*/
   height: 100vh;
   align-items: center;
   justify-content: center;
 }
 
 .login {
-  /*background-color: blueviolet;*/
   width: 50%;
   height: 30rem;
   padding-left: 2rem;
@@ -18,7 +16,6 @@ form {
   height: 80%;
   width: 90%;
   padding-left: 10%;
-  /*background-color: coral;*/
 }
 
 input {
@@ -40,7 +37,7 @@ input {
   transition: 0.7s;
   border: none;
   border-radius: 0.5rem;
-  background-color: #468eec;
+  background-color: #2977ff;
   box-shadow: 0px 2px 6px 4px rgba(0, 0, 0, 0.2);
 }
 
@@ -83,6 +80,6 @@ input {
   transition: 0.7s;
   border: none;
   border-radius: 0.5rem;
-  background-color: #468eec;
+  background-color: #2977ff;
   box-shadow: 0px 2px 6px 4px rgba(0, 0, 0, 0.2);
 }

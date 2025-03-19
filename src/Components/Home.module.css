@@ -9,7 +9,7 @@
   display: flex;
   box-shadow: 0px 4px 6px 4px rgba(0, 0, 0, 0.2);
   align-items: center;
-  background-color: none;
+  background-color: #2977ff;
 }
 
 .navtitle {
@@ -35,7 +35,7 @@
 
 h2 {
   font-size: 1.7rem;
-  color: #333000;
+  color: navy;
 }
 
 .startbtn {
@@ -44,7 +44,7 @@ h2 {
   margin-top: 4rem;
   height: 3rem;
   width: 40%;
-  background-color: #468eec;
+  background-color: #2977ff;
   font-size: 1.5rem;
   box-shadow: 0px 2px 6px 4px rgba(0, 0, 0, 0.2);
 }
@@ -52,3 +52,31 @@ h2 {
 .content {
   padding: 0 6rem;
 }
+.contact{
+  all: unset;
+  display: flex;
+  padding-left: 8rem;
+}
+
+.contacttitle{
+  color:white;
+  font-size: 4.5rem;
+  margin-top: 10rem;
+}
+
+
+.contactform{
+  margin-top: 10rem;
+}
+
+.submitbtn {
+  all: unset;
+  width: 13rem;
+  height: 3.5rem;
+  margin: 2rem 0 0 57%;
+  font-size: 1.2rem;
+  box-shadow: 0px 2px 6px 4px rgba(0, 0, 0, 0.2);
+  border-radius: 1rem;
+  background-color: #2977ff;
+}
+
