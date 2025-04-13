@@ -28,9 +28,9 @@ function Dashboard() {
         <div className={styles.stats}>
           <div className={styles.analysis}>
             <div className={styles.info}>
-              <h4>User Name</h4>
-              <h4>Email</h4>
-              <h4>Age</h4>
+              <h2>User Name</h2>
+              <h2>Email</h2>
+              <h2>Age</h2>
             </div>
             <div className={styles.track}>
               <div className={styles.total}>
@@ -94,9 +94,15 @@ function Dashboard() {
             </div>
           </div>
           <div className={styles.previousip}>
-            <div className={styles.history}></div>
-            <div className={styles.history}></div>
-            <div className={styles.history}></div>
+            <div className={styles.history}>
+              <h1>last three times when you have Shared a thought</h1>
+            </div>
+            <div className={styles.history}>
+              <h1>Previous three times mood.</h1>
+            </div>
+            <div className={styles.history}>
+              <h3>It's okay to feel what you're feeling right now—your emotions are valid, and they matter.</h3>
+            </div>
           </div>
         </div>
       );

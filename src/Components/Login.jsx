@@ -69,8 +69,8 @@ function MovingDiv() {
           <h2>to Explore a new World!</h2>
           <p>
             {movingRight
-              ? "Are you a new user?"
-              : "Do you have an existing account?"}
+              ? "Do you have an existing account?"
+              : "Are you a new user?"}
           </p>
           <button className={styles.swapbtn} onClick={togglePosition}>
             {movingRight ? "Signup" : "Login"}
