@@ -95,10 +95,16 @@ function Dashboard() {
           </div>
           <div className={styles.previousip}>
             <div className={styles.history}>
-              <h1>last three times when you have Shared a thought</h1>
+              <h3>Recent Logins</h3>
+              <h4>Login 1</h4>
+              <h4>Login 2</h4>
+              <h4>Login 3</h4>
             </div>
             <div className={styles.history}>
-              <h1>Previous three times mood.</h1>
+            <h3>Recent Moods</h3>
+              <h4>Mood 1</h4>
+              <h4>Mood 2</h4>
+              <h4>Mood 3</h4>
             </div>
             <div className={styles.history}>
               <h3>It's okay to feel what you're feeling right now—your emotions are valid, and they matter.</h3>

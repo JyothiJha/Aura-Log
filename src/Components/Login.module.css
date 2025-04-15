@@ -37,7 +37,7 @@ input {
   transition: 0.7s;
   border: none;
   border-radius: 0.5rem;
-  background-color: #2977ff;
+  background-color: #B38B6D;
   box-shadow: 0px 2px 6px 4px rgba(0, 0, 0, 0.2);
 }
 
@@ -61,8 +61,8 @@ input {
   height: 100vh;
   transition: 0.7s ease;
   align-items: center;
-  color: #fff;
-  background-image: url("../backgroundimg.jpg");
+  color: black;
+  background-image: url("../backgroundimg2.jpg");
   background-repeat: no-repeat;
   background-size: 100% 100%;
   overflow: hidden;
@@ -80,6 +80,6 @@ input {
   transition: 0.7s;
   border: none;
   border-radius: 0.5rem;
-  background-color: #2977ff;
+  background-color: #B38B6D;
   box-shadow: 0px 2px 6px 4px rgba(0, 0, 0, 0.2);
 }

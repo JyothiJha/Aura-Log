@@ -1,15 +1,17 @@
 .body {
   height: 100vh;
-  background-image: url("../backgroundimg.jpg");
+  background-image: url("../backgroundimg2.jpg");
   background-repeat: no-repeat;
   background-size: 100% 100%;
 }
-
+a {
+  all: unset;
+}
 .navbar {
   display: flex;
   box-shadow: 0px 4px 6px 4px rgba(0, 0, 0, 0.2);
   align-items: center;
-  background-color: #2977ff;
+  background-color: #B38B6D;
 }
 
 .navtitle {
@@ -30,12 +32,12 @@
 
 .welcome {
   font-size: 7rem;
-  color: white;
+  color: black;
 }
 
 h2 {
   font-size: 1.7rem;
-  color: navy;
+  color: #36454F;
 }
 
 .startbtn {
@@ -44,7 +46,7 @@ h2 {
   margin-top: 4rem;
   height: 3rem;
   width: 40%;
-  background-color: #2977ff;
+  background-color: #B38B6D;
   font-size: 1.5rem;
   box-shadow: 0px 2px 6px 4px rgba(0, 0, 0, 0.2);
 }
@@ -59,11 +61,14 @@ h2 {
 }
 
 .contacttitle{
-  color:white;
+  color:black;
   font-size: 4.5rem;
   margin-top: 10rem;
 }
 
+.quiry{
+  color:#36454F;
+}
 
 .contactform{
   margin-top: 10rem;
@@ -77,6 +82,6 @@ h2 {
   font-size: 1.2rem;
   box-shadow: 0px 2px 6px 4px rgba(0, 0, 0, 0.2);
   border-radius: 1rem;
-  background-color: #2977ff;
+  background-color: #B38B6D;
 }
 

@@ -13,7 +13,7 @@ h4 {
 .navbar {
   width: 25%;
   display: block;
-  background-color: #2977ff;
+  background-color: #B38B6D;
 }
 
 .navbtn {
@@ -43,7 +43,7 @@ h4 {
   height: 100vh;
   position: absolute;
   background-color: white;
-  background-image: url(../backgroundimg.jpg);
+  background-image: url(../backgroundimg2.jpg);
   background-repeat: no-repeat;
   background-size: 100% 100%;
 }
@@ -68,7 +68,7 @@ h4 {
   box-shadow: 0px 2px 6px 4px rgba(0, 0, 0, 0.2);
   border-radius: 1rem;
   justify-content: space-between;
-  background-color: #2977ff;
+  background-color: #B38B6D;
   filter: grayscale(100);
   transition: 0.5s;
 }
@@ -91,7 +91,7 @@ h4 {
   font-size: 1.2rem;
   box-shadow: 0px 2px 6px 4px rgba(0, 0, 0, 0.2);
   border-radius: 1rem;
-  background-color: #2977ff;
+  background-color: #B38B6D;
 }
 
 .stats {
@@ -99,7 +99,7 @@ h4 {
   height: 100vh;
   width: 75%;
   position: absolute;
-  background-image: url(../backgroundimg.jpg);
+  background-image: url(../backgroundimg2.jpg);
   background-repeat: no-repeat;
   background-size: 100% 100%;
 }
@@ -109,12 +109,12 @@ h4 {
   display: block;
 }
 .info {
-  width: 93%;
+  width: 89%;
   margin: 2rem;
   height: 24%;
   padding: 1rem;
   background-color: white;
-  box-shadow: 0px 2px 6px 4px rgba(0, 0, 0, 0.2);
+  box-shadow: 0px 2px 6px 4px rgba(161, 118, 118, 0.2);
   border-radius: 1rem;
 }
 
@@ -175,11 +175,12 @@ h4 {
 
 .history {
   width: 80%;
-  height: 20%;
+  height: 23%;
   box-shadow: 0px 2px 6px 4px rgba(0, 0, 0, 0.2);
   border-radius: 1rem;
-  background-color: bisque;
+  background-color: #E4C59C;
   margin: 2rem 3.5%;
   padding: 1rem;
+  
 }
 
