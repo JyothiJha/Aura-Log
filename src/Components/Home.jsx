@@ -24,7 +24,7 @@ function Home() {
     e.preventDefault();
     try {
       const response = await axios.post(
-        "http://localhost:5000/api/add-data",
+        "http://localhost:3000/api/add-data",
         formData
       );
       alert(response.data.message);
