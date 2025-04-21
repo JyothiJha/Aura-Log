@@ -1,20 +1,28 @@
 const express = require("express");
+const authRoutes = require("./auth");
 const Routes = require("./routes");
+const cors = require("cors");
 
 const app = express();
 const port = 3000;
 
 
-// Use routes for the API
+app.use(cors());
 app.use(express.json());
 
+// Logging middleware
 app.use((req, res, next) => {
-    console.log(`Received ${req.method} request for ${req.url}`);
-    next(); // Pass control to the next middleware/route handler
-  });
-console.log("Routes mounted at /api");
-app.use("/api", Routes);
+  console.log(`Received ${req.method} request for ${req.url}`);
+  next();
+});
 
+
+// Mount the routes
+app.use("/api/auth", authRoutes);
+app.use("/api", Routes);
+app.get('/dashboard', (req, res) => {
+  res.send("Dashboard Page");
+});
 
 
 app.listen(port, () => {
