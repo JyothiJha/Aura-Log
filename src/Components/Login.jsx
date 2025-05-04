@@ -53,20 +53,21 @@ function MovingDiv() {
       const response = await fetch("http://localhost:3000/api/auth/login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
+        credentials: "include",
         body: JSON.stringify(loginData),
       });
-  
+
       if (response.ok) {
         const result = await response.json();
-        
+
         // Show success alert and wait for acknowledgment
         alert(result.message || "Login successful!");
-  
+
         // Redirect to the dashboard after the alert
         navigate("/dashboard");
       } else {
         const error = await response.json();
-  
+
         // Show error alert for invalid credentials or other issues
         alert(error.message || "Login failed. Please check your credentials.");
       }
@@ -75,7 +76,6 @@ function MovingDiv() {
       alert("Login failed. Please try again later.");
     }
   };
-  
 
   const handleInputChange = (event, type) => {
     const { name, value } = event.target;
@@ -112,7 +112,11 @@ function MovingDiv() {
             Forgot Password?
           </a>
           <br />
-          <button className={styles.logbtn} type="submit" onClick={handleLoginSubmit}>
+          <button
+            className={styles.logbtn}
+            type="submit"
+            onClick={handleLoginSubmit}
+          >
             Login
           </button>
         </form>

@@ -11,7 +11,7 @@ a {
   display: flex;
   box-shadow: 0px 4px 6px 4px rgba(0, 0, 0, 0.2);
   align-items: center;
-  background-color: #B38B6D;
+  background-color: #b38b6d;
 }
 
 .navtitle {
@@ -37,7 +37,7 @@ a {
 
 h2 {
   font-size: 1.7rem;
-  color: #36454F;
+  color: #36454f;
 }
 
 .startbtn {
@@ -46,7 +46,7 @@ h2 {
   margin-top: 4rem;
   height: 3rem;
   width: 40%;
-  background-color: #B38B6D;
+  background-color: #b38b6d;
   font-size: 1.5rem;
   box-shadow: 0px 2px 6px 4px rgba(0, 0, 0, 0.2);
 }
@@ -54,23 +54,23 @@ h2 {
 .content {
   padding: 0 6rem;
 }
-.contact{
+.contact {
   all: unset;
   display: flex;
   padding-left: 8rem;
 }
 
-.contacttitle{
-  color:black;
+.contacttitle {
+  color: black;
   font-size: 4.5rem;
   margin-top: 10rem;
 }
 
-.quiry{
-  color:#36454F;
+.quiry {
+  color: #36454f;
 }
 
-.contactform{
+.contactform {
   margin-top: 10rem;
 }
 
@@ -84,6 +84,5 @@ h2 {
   font-size: 1.2rem;
   box-shadow: 0px 2px 6px 4px rgba(0, 0, 0, 0.2);
   border-radius: 1rem;
-  background-color: #B38B6D;
+  background-color: #b38b6d;
 }
-

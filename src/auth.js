@@ -67,22 +67,27 @@ router.post("/signup", async (req, res) => {
       }
 
       // Proceed with signup
-      bcrypt.hash(password, 10).then((hashedPassword) => {
-        const createdAt = new Date().toISOString();
+      bcrypt
+        .hash(password, 10)
+        .then((hashedPassword) => {
+          const createdAt = new Date().toISOString();
 
-        const newUserRow = `${username},${email},${hashedPassword},${createdAt}`;
+          const newUserRow = `${username},${email},${hashedPassword},${createdAt}`;
 
-        appendToCSV(newUserRow, (err) => {
-          if (err) {
-            console.error("Error appending data:", err);
-            return res.status(500).send({ message: "Failed to save user data." });
-          }
-          res.status(201).send({ message: "User signed up successfully!" });
+          appendToCSV(newUserRow, (err) => {
+            if (err) {
+              console.error("Error appending data:", err);
+              return res
+                .status(500)
+                .send({ message: "Failed to save user data." });
+            }
+            res.status(201).send({ message: "User signed up successfully!" });
+          });
+        })
+        .catch((err) => {
+          console.error("Error hashing password:", err);
+          res.status(500).send({ message: "Internal server error." });
         });
-      }).catch((err) => {
-        console.error("Error hashing password:", err);
-        res.status(500).send({ message: "Internal server error." });
-      });
     });
   } catch (err) {
     console.error("Error during signup:", err);
@@ -90,13 +95,14 @@ router.post("/signup", async (req, res) => {
   }
 });
 
-
 // Login controller
 router.post("/login", (req, res) => {
   const { email, password } = req.body;
 
   if (!email || !password) {
-    return res.status(400).send({ message: "Email and password are required." });
+    return res
+      .status(400)
+      .send({ message: "Email and password are required." });
   }
 
   readCSVFile((err, users) => {
@@ -116,9 +122,12 @@ router.post("/login", (req, res) => {
         return res.status(401).send({ message: "Invalid credentials." });
       }
 
+      req.session.userEmail = email;
+      console.log("Session Data in /saveMood:", req.session);
       // Send success message only
-      res.status(200).send({ 
-        message: `Welcome back, ${user.username}!`
+      res.status(200).send({
+        message: `Welcome back, ${user.username}!`,
+        sessionId: req.sessionID,
       });
     });
   });

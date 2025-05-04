@@ -1,8 +1,25 @@
 import React, { useState } from "react";
-import { Circle, Linear } from "rc-progress";
+import { Circle } from "rc-progress";
 import styles from "./Dashboard.module.css";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import { Link } from "react-router-dom";
+
+const handleMoodSubmit = (mood) => {
+  fetch("http://localhost:3000/saveMood", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+
+    body: JSON.stringify({ mood }),
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      alert(data.message); // Show success or error alert
+    })
+    .catch((error) => {
+      alert("Error saving mood, please try again.");
+      console.error("Error:", error);
+    });
+};
 
 function Dashboard() {
   const [currentPage, setCurrentPage] = useState("Home");
@@ -13,10 +30,34 @@ function Dashboard() {
         <div className={styles.content}>
           <div className={styles.share}>
             <div className={styles.options}>
-              <button className={styles.optionbtn}> 😊 Happy</button>
-              <button className={styles.optionbtn}> 😔 Sad</button>
-              <button className={styles.optionbtn}> 🤔 Confused</button>
-              <button className={styles.optionbtn}> 😡 Angry</button>
+              <button
+                className={styles.optionbtn}
+                onClick={() => handleMoodSubmit("Happy")}
+              >
+                {" "}
+                😊 Happy
+              </button>
+              <button
+                className={styles.optionbtn}
+                onClick={() => handleMoodSubmit("Sad")}
+              >
+                {" "}
+                😔 Sad
+              </button>
+              <button
+                className={styles.optionbtn}
+                onClick={() => handleMoodSubmit("Confused")}
+              >
+                {" "}
+                🤔 Confused
+              </button>
+              <button
+                className={styles.optionbtn}
+                onClick={() => handleMoodSubmit("Angry")}
+              >
+                {" "}
+                😡 Angry
+              </button>
             </div>
             <input className={styles.textspace} placeholder="type here" />
             <button className={styles.submitbtn}>Submit</button>
@@ -101,13 +142,16 @@ function Dashboard() {
               <h4>Login 3</h4>
             </div>
             <div className={styles.history}>
-            <h3>Recent Moods</h3>
+              <h3>Recent Moods</h3>
               <h4>Mood 1</h4>
               <h4>Mood 2</h4>
               <h4>Mood 3</h4>
             </div>
             <div className={styles.history}>
-              <h3>It's okay to feel what you're feeling right now—your emotions are valid, and they matter.</h3>
+              <h3>
+                It's okay to feel what you're feeling right now—your emotions
+                are valid, and they matter.
+              </h3>
             </div>
           </div>
         </div>
@@ -136,8 +180,9 @@ function Dashboard() {
         >
           Share a Thought
         </button>
-        <Link to="/"><button className={styles.navbtn}>Signout</button></Link>
-        
+        <Link to="/">
+          <button className={styles.navbtn}>Signout</button>
+        </Link>
       </div>
       <div>{renderContent()}</div>
     </div>

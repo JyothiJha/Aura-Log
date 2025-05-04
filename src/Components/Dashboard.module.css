@@ -14,7 +14,7 @@ h4 {
 .navbar {
   width: 25%;
   display: block;
-  background-color: #B38B6D;
+  background-color: #b38b6d;
 }
 
 .navbtn {
@@ -69,7 +69,7 @@ h4 {
   box-shadow: 0px 2px 6px 4px rgba(0, 0, 0, 0.2);
   border-radius: 1rem;
   justify-content: space-between;
-  background-color: #B38B6D;
+  background-color: #b38b6d;
   filter: grayscale(100);
   transition: 0.5s;
 }
@@ -88,11 +88,12 @@ h4 {
   all: unset;
   width: 13rem;
   height: 3.5rem;
-  margin: 2rem 0 0 70%;
+  margin: 3rem 0 0 73%;
   font-size: 1.2rem;
+  text-align: center;
   box-shadow: 0px 2px 6px 4px rgba(0, 0, 0, 0.2);
   border-radius: 1rem;
-  background-color: #B38B6D;
+  background-color: #b38b6d;
 }
 
 .stats {
@@ -168,9 +169,9 @@ h4 {
   transition: 0.5s;
 }
 
-.cbar:hover{
-    filter: grayscale(0%);
-    transition: 0.5s;
+.cbar:hover {
+  filter: grayscale(0%);
+  transition: 0.5s;
 }
 
 .previousip {
@@ -183,9 +184,7 @@ h4 {
   height: 23%;
   box-shadow: 0px 2px 6px 4px rgba(0, 0, 0, 0.2);
   border-radius: 1rem;
-  background-color: #E4C59C;
+  background-color: #e4c59c;
   margin: 2rem 3.5%;
   padding: 1rem;
-  
 }
-
