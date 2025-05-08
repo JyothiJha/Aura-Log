@@ -3,26 +3,49 @@ import { Circle } from "rc-progress";
 import styles from "./Dashboard.module.css";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import { Link } from "react-router-dom";
-
-const handleMoodSubmit = (mood) => {
-  fetch("http://localhost:3000/saveMood", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-
-    body: JSON.stringify({ mood }),
-  })
-    .then((response) => response.json())
-    .then((data) => {
-      alert(data.message); // Show success or error alert
-    })
-    .catch((error) => {
-      alert("Error saving mood, please try again.");
-      console.error("Error:", error);
-    });
-};
+import CryptoJS from "crypto-js";
 
 function Dashboard() {
-  const [currentPage, setCurrentPage] = useState("Home");
+  const [currentPage, setCurrentPage] = useState("Thought");
+  const [selectedMood, setSelectedMood] = useState("");
+  const [textInput, setTextInput] = useState("");
+
+  const handleMoodClick = (mood) => {
+    setSelectedMood(mood);
+  };
+
+  const handleSubmit = async (e) => {
+    if (!selectedMood) {
+      alert("PLease select a mood before submitting.");
+      return;
+    }
+
+    if (!textInput.trim()) {
+      alert("Please enter a thought before submitting.");
+      return;
+    }
+
+    try {
+      const response = await fetch("http://localhost:3000/saveMoodAndText", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          mood: selectedMood,
+          text: textInput,
+        }),
+      });
+
+      if (response.ok) {
+        alert("Mood and thought saved successfully!");
+        setSelectedMood("");
+      } else {
+        alert("Failed to save mood and thought. Please try again.");
+      }
+    } catch (error) {
+      console.error("Error saving mood and thought:", error);
+      alert("Failed to save mood and thought.");
+    }
+  };
 
   const renderContent = () => {
     if (currentPage === "Thought") {
@@ -32,35 +55,42 @@ function Dashboard() {
             <div className={styles.options}>
               <button
                 className={styles.optionbtn}
-                onClick={() => handleMoodSubmit("Happy")}
+                onClick={() => handleMoodClick("Happy")}
               >
                 {" "}
                 😊 Happy
               </button>
               <button
                 className={styles.optionbtn}
-                onClick={() => handleMoodSubmit("Sad")}
+                onClick={() => handleMoodClick("Sad")}
               >
                 {" "}
                 😔 Sad
               </button>
               <button
                 className={styles.optionbtn}
-                onClick={() => handleMoodSubmit("Confused")}
+                onClick={() => handleMoodClick("Confused")}
               >
                 {" "}
                 🤔 Confused
               </button>
               <button
                 className={styles.optionbtn}
-                onClick={() => handleMoodSubmit("Angry")}
+                onClick={() => handleMoodClick("Angry")}
               >
                 {" "}
                 😡 Angry
               </button>
             </div>
-            <input className={styles.textspace} placeholder="type here" />
-            <button className={styles.submitbtn}>Submit</button>
+            <input
+              className={styles.textspace}
+              placeholder="type here"
+              value={textInput}
+              onChange={(e) => setTextInput(e.target.value)}
+            />
+            <button className={styles.submitbtn} onClick={handleSubmit}>
+              Submit
+            </button>
           </div>
         </div>
       );

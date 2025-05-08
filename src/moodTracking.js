@@ -1,15 +1,14 @@
+const { createObjectCsvWriter } = require("csv-writer");
 const fs = require("fs");
 const path = require("path");
 
-const filePath = path.join(__dirname, "track.csv");
+const  filePath =path.join(__dirname, "track.csv");
 
-
-const saveMoodToCSV = async (email, mood) => {
-  const timestamp = new Date().toISOString();
-  const csvData = `${email},${mood},${timestamp}\n`;
+const saveMoodToCSV = async (email, mood, text, timestamp) => {
+  const csvData = `${email},${mood},${text},${timestamp}\n`;
   console.log("Attempting to write:", csvData);
   try {
-    await fs.promises.appendFile(filePath, csvData);
+    fs.appendFileSync(filePath, csvData, "utf8");
     console.log("Mood recorded successfully!");
     return { success: true };
   } catch (err) {

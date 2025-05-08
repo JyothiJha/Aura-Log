@@ -23,9 +23,24 @@ function MovingDiv() {
       }, 500);
     }
   };
+  // Function to validate email format
+  const isValidEmail = (email) => {
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailPattern.test(email);
+  }
 
   const handleSignupSubmit = async (e) => {
     e.preventDefault();
+
+    if (!isValidEmail(signupData.email)) {
+      alert("please enter a valid email address");
+      return;
+    }
+    if (signupData.password.length < 8) {
+      alert("Password must be at least 8 characters long.");
+      return;
+    }
+
     try {
       const response = await fetch("http://localhost:3000/api/auth/signup", {
         method: "POST",
@@ -47,8 +62,10 @@ function MovingDiv() {
   };
 
   const navigate = useNavigate();
+
   const handleLoginSubmit = async (e) => {
     e.preventDefault();
+
     try {
       const response = await fetch("http://localhost:3000/api/auth/login", {
         method: "POST",
@@ -59,8 +76,6 @@ function MovingDiv() {
 
       if (response.ok) {
         const result = await response.json();
-
-        // Show success alert and wait for acknowledgment
         alert(result.message || "Login successful!");
 
         // Redirect to the dashboard after the alert
@@ -142,14 +157,13 @@ function MovingDiv() {
           />
           <h4>Enter Password</h4>
           <input
-            type="text"
+            type="password"
             name="password"
             placeholder="must contain 8 characters"
             value={signupData.password}
             onChange={(e) => handleInputChange(e, "signup")}
           />
           <br />
-          <a href="">Forgot Password?</a>
           <br />
           <button className={styles.logbtn}>Signup</button>
         </form>
@@ -177,8 +191,8 @@ function MovingDiv() {
           <h2>to Explore a new World!</h2>
           <p>
             {movingRight
-              ? "Do you have an existing account?"
-              : "Are you a new user?"}
+              ? "Are you a new user?"
+              : "Do you have an existing account?"}
           </p>
           <button className={styles.swapbtn} onClick={togglePosition}>
             {movingRight ? "Signup" : "Login"}

@@ -1,3 +1,4 @@
-email,mood,timestamp
-test@example.com,happy,2025-05-02T16:30:00Z
-test@example.com,happy,2025-05-02T16:30:00Z
+email,mood,text,timestamp
+jyo@gmail.com,Happy,hauro,undefined
+jyo@gmail.com,Happy,gytiioggfur,2025-05-08T05:21:05.528Z
+jyo@gmail.com,Confused,gytiioggfur,2025-05-08T11:32:57.125Z

@@ -29,9 +29,15 @@ app.use(session({
 // Mount the routes
 app.use("/api/auth", authRoutes);
 app.use("/api", Routes);
-app.use("/saveMood", moodRoute);
+app.post("/saveMoodAndText", moodRoute);
 app.get('/dashboard', (req, res) => {
   res.send("Dashboard Page");
+});
+
+// Error-handling middleware
+app.use((err, req, res, next) => {
+  console.error("Error:", err.message);
+  res.status(500).json({ error: "Internal Server Error" });
 });
 
 
