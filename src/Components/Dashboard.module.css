@@ -77,6 +77,12 @@ h4 {
   filter: grayscale(0);
   transition: 0.5s;
 }
+
+.optionbtn.active {
+  filter: grayscale(0);
+  background-color: #b38b6d;
+  color: black;
+}
 .textspace {
   width: 85%;
   height: 20rem;
@@ -111,17 +117,50 @@ h4 {
   display: block;
 }
 
-.info {
-  width: 89%;
-  align-items: center;
-  margin: 2rem;
-  height: 28%;
-  padding-left: 2rem;
-  padding-top: 0.1rem;
-  padding-bottom: 0.1rem;
-  background-color: white;
-  box-shadow: 0px 2px 6px 4px rgba(161, 118, 118, 0.2);
+.dropdown {
+  width: 90%;
+  height: 25%;
+  margin: 2rem 3.5%;
+  background-color: #f9f9f9;
+  padding: 20px;
   border-radius: 1rem;
+  box-shadow: 0px 2px 6px 4px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  margin: auto;
+}
+.dropbtn {
+  all: unset;
+  padding: 10px 20px;
+  background-color: #b38b6d;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  font-size: 14px;
+  transition: background-color 0.3s, transform 0.2s;
+}
+.fetch {
+  display: flex;
+  padding-top: 10%;
+}
+.fetchbtn {
+  width: 18rem;
+  height: 2.5rem;
+  margin-top: 1rem;
+  padding: 0.5rem 1rem;
+  background-color: #b08f77;
+  color: white;
+  border: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+.fetchbtn:hover {
+  background-color: #b38b6d;
+  transform: scale(1.05);
 }
 
 .track {
@@ -135,7 +174,6 @@ h4 {
 
 .total {
   width: 40%;
-
   justify-content: space-between;
 }
 
@@ -187,4 +225,10 @@ h4 {
   background-color: #e4c59c;
   margin: 2rem 3.5%;
   padding: 1rem;
+}
+.dropdownRow {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  margin-bottom: 1rem;
 }

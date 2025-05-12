@@ -51,6 +51,12 @@ function MovingDiv() {
       if (response.ok) {
         const result = await response.json();
         alert(result.message || "Signup successful!");
+
+        setSignupData({
+          name: "",
+          email: "",
+          password: "",
+        });
       } else {
         const error = await response.json();
         alert(error.message || "Signup failed.");

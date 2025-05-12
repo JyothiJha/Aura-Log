@@ -2,9 +2,10 @@ const { createObjectCsvWriter } = require("csv-writer");
 const fs = require("fs");
 const path = require("path");
 
-const  filePath =path.join(__dirname, "track.csv");
+const filePath = path.join(__dirname, "track.csv");
 
 const saveMoodToCSV = async (email, mood, text, timestamp) => {
+  const formattedTimestamp = new Date(timestamp).toISOString().split("T")[0];
   const csvData = `${email},${mood},${text},${timestamp}\n`;
   console.log("Attempting to write:", csvData);
   try {

@@ -8,10 +8,15 @@ import CryptoJS from "crypto-js";
 function Dashboard() {
   const [currentPage, setCurrentPage] = useState("Thought");
   const [selectedMood, setSelectedMood] = useState("");
+  const [activeButton, setActiveButton] = useState("");
   const [textInput, setTextInput] = useState("");
+  const [selectedYear, setSelectedYear] = useState("");
+  const [selectedMonth, setSelectedMonth] = useState("");
+  const [selectedDate, setSelectedDate] = useState("");
 
   const handleMoodClick = (mood) => {
     setSelectedMood(mood);
+    setActiveButton(mood);
   };
 
   const handleSubmit = async (e) => {
@@ -38,12 +43,45 @@ function Dashboard() {
       if (response.ok) {
         alert("Mood and thought saved successfully!");
         setSelectedMood("");
+        setTextInput("");
+        setActiveButton("");
       } else {
         alert("Failed to save mood and thought. Please try again.");
       }
     } catch (error) {
       console.error("Error saving mood and thought:", error);
       alert("Failed to save mood and thought.");
+    }
+  };
+
+  const handleFetchData = async () => {
+    if (!selectedYear || !selectedMonth || !selectedDate) {
+      alert("Please select a date before fetching data.");
+      return;
+    }
+    const selectedFullDate = `${selectedYear}-${selectedMonth}-${selectedDate}`;
+
+    try {
+      const response = await fetch(
+        `http://localhost:3000/getSharedData?date=${selectedFullDate}`
+      );
+      if (!response.ok) {
+        alert("Failed to fetch data.");
+      }
+      const data = await response.json();
+
+      const filteredData = data.filter(
+        (entry) => entry.date === selectedFullDate
+      );
+
+      if (filteredData.length > 0) {
+        alert(`Data for ${selectedFullDate}:\n${filteredData[0].text}`);
+      } else {
+        alert(`No data found for ${selectedFullDate}.`);
+      }
+    } catch (error) {
+      console.error("Error fetching data:", error);
+      alert("Failed to fetch data.Please try again.");
     }
   };
 
@@ -54,28 +92,36 @@ function Dashboard() {
           <div className={styles.share}>
             <div className={styles.options}>
               <button
-                className={styles.optionbtn}
+                className={`${styles.optionbtn} ${
+                  activeButton === "Happy" ? styles.active : ""
+                }`}
                 onClick={() => handleMoodClick("Happy")}
               >
                 {" "}
                 😊 Happy
               </button>
               <button
-                className={styles.optionbtn}
+                className={`${styles.optionbtn} ${
+                  activeButton === "Sad" ? styles.active : ""
+                }`}
                 onClick={() => handleMoodClick("Sad")}
               >
                 {" "}
                 😔 Sad
               </button>
               <button
-                className={styles.optionbtn}
+                className={`${styles.optionbtn} ${
+                  activeButton === "Confused" ? styles.active : ""
+                }`}
                 onClick={() => handleMoodClick("Confused")}
               >
                 {" "}
                 🤔 Confused
               </button>
               <button
-                className={styles.optionbtn}
+                className={`${styles.optionbtn} ${
+                  activeButton === "Angry" ? styles.active : ""
+                }`}
                 onClick={() => handleMoodClick("Angry")}
               >
                 {" "}
@@ -98,11 +144,68 @@ function Dashboard() {
       return (
         <div className={styles.stats}>
           <div className={styles.analysis}>
-            <div className={styles.info}>
-              <h2>User Name</h2>
-              <h2>Email</h2>
-              <h2>Age</h2>
+            <div className={styles.dropdown}>
+              <div className={styles.dropdownRow}>
+                <h3>Select the year</h3>
+                <select
+                  value={selectedYear}
+                  className="styles.dropbtn"
+                  onChange={(e) => setSelectedYear(e.target.value)}
+                >
+                  <option value="">Select Year</option>
+                  {Array.from({ length: 20 }, (_, i) => {
+                    const year = 2025 + i;
+                    return (
+                      <option key={year} value={year}>
+                        {year}
+                      </option>
+                    );
+                  })}
+                </select>
+                <h3>Select the Month</h3>
+                <select
+                  value={selectedMonth}
+                  className="styles.dropbtn"
+                  onChange={(e) => setSelectedMonth(e.target.value)}
+                >
+                  <option value="">Select Month</option>
+                  <option value="01">January</option>
+                  <option value="02">February</option>
+                  <option value="03">March</option>
+                  <option value="04">April</option>
+                  <option value="05">May</option>
+                  <option value="06">June</option>
+                  <option value="07">July</option>
+                  <option value="08">August</option>
+                  <option value="09">September</option>
+                  <option value="10">October</option>
+                  <option value="11">November</option>
+                  <option value="12">December</option>
+                </select>
+                <h3>Select the date</h3>
+                <select
+                  value={selectedDate}
+                  className="styles.dropbtn"
+                  onChange={(e) => setSelectedDate(e.target.value)}
+                >
+                  <option value="">select Date</option>
+                  {Array.from({ length: 31 }, (_, i) => {
+                    return (
+                      <option
+                        key={i + 1}
+                        value={String(i + 1).padStart(2, "0")}
+                      >
+                        {i + 1}
+                      </option>
+                    );
+                  })}
+                </select>
+              </div>
+              <button className={styles.fetchbtn} onClick={handleFetchData}>
+                Fetch Data
+              </button>
             </div>
+
             <div className={styles.track}>
               <div className={styles.total}>
                 <div className={styles.totalprog}>
