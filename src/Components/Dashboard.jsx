@@ -208,7 +208,7 @@ function Dashboard() {
 
             <div className={styles.track}>
               <div className={styles.total}>
-                <div className={styles.totalprog}>
+                <div className={styles.totalprog} data-tag="Total Mood Entries">
                   <Circle
                     percent={100}
                     strokeWidth={6}
@@ -217,11 +217,12 @@ function Dashboard() {
                     trailWidth={6}
                     trailColor="black"
                   />
+                  <h3>Total input</h3>
                 </div>
               </div>
               <div className={styles.allprog}>
                 <div className={styles.prog}>
-                  <div className={styles.cbar}>
+                  <div className={styles.cbar} data-tag="Happy">
                     <Circle
                       percent={40}
                       strokeWidth={6}
@@ -230,8 +231,9 @@ function Dashboard() {
                       trailWidth={6}
                       trailColor="black"
                     />
+                    <p>{`Happy`}</p>
                   </div>
-                  <div className={styles.cbar}>
+                  <div className={styles.cbar} data-tag="Sad">
                     <Circle
                       percent={10}
                       strokeWidth={6}
@@ -240,10 +242,11 @@ function Dashboard() {
                       trailWidth={6}
                       trailColor="black"
                     />
+                    <p>{`Sad`}</p>
                   </div>
                 </div>
                 <div className={styles.prog}>
-                  <div className={styles.cbar}>
+                  <div className={styles.cbar} data-tag="Confused">
                     <Circle
                       percent={30}
                       strokeWidth={6}
@@ -252,8 +255,9 @@ function Dashboard() {
                       trailWidth={6}
                       trailColor="black"
                     />
+                    <p>{`Confused`}</p>
                   </div>
-                  <div className={styles.cbar}>
+                  <div className={styles.cbar} data-tag="Angry">
                     <Circle
                       percent={20}
                       strokeWidth={6}
@@ -262,6 +266,7 @@ function Dashboard() {
                       trailWidth={6}
                       trailColor="black"
                     />
+                    <p>{`Angry`}</p>
                   </div>
                 </div>
               </div>

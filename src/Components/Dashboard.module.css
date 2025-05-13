@@ -232,3 +232,144 @@ h4 {
   align-items: center;
   margin-bottom: 1rem;
 }
+
+/* Responsive styles */
+@media (max-width: 1024px) {
+  .dashboard {
+    flex-direction: column;
+  }
+
+  .navbar {
+    width: 100%;
+    height: auto;
+  }
+
+  .content, .stats {
+    width: 100%;
+    position: relative;
+  }
+
+  .options {
+    flex-wrap: wrap;
+    justify-content: center;
+    height: auto;
+  }
+
+  .optionbtn {
+    width: 45%;
+    margin-bottom: 1rem;
+  }
+
+  .textspace {
+    height: 15rem;
+  }
+
+  .submitbtn {
+    margin: 2rem auto;
+    display: block;
+  }
+
+  .dropdown {
+    width: 100%;
+    margin: 1rem 0;
+  }
+
+  .track {
+    flex-direction: column;
+    height: auto;
+  }
+
+  .total, .allprog {
+    width: 100%;
+  }
+
+  .totalprog, .cbar {
+    height: auto;
+    width: 60%;
+    margin: 2rem auto;
+  }
+
+  .previousip {
+    width: 100%;
+  }
+
+  .history {
+    width: 90%;
+    margin: 1rem auto;
+  }
+}
+
+@media (max-width: 768px) {
+  .optionbtn {
+    width: 90%;
+  }
+
+  .textspace {
+    width: 90%;
+    margin-left: 5%;
+  }
+
+  .submitbtn {
+    width: 90%;
+  }
+
+  .dropdownRow {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .dropdown {
+    padding: 10px;
+  }
+
+  .fetchbtn {
+    width: 90%;
+  }
+
+  .cbar {
+    width: 70%;
+  }
+
+  .totalprog, .cbar {
+    width: 80%;
+    height: auto;
+    margin: 1.5rem auto;
+  }
+}
+
+@media (max-width: 480px) {
+  .navbar {
+    text-align: center;
+  }
+
+  .navbtn {
+    font-size: 1rem;
+    padding: 0.5rem;
+  }
+
+  .profile {
+    padding: 0.5rem;
+  }
+
+  .optionbtn {
+    font-size: 1rem;
+  }
+
+  .textspace {
+    height: 10rem;
+  }
+
+  .submitbtn {
+    font-size: 1rem;
+  }
+
+  .history {
+    padding: 0.5rem;
+  }
+
+  .totalprog, .cbar {
+    width: 90%;
+    height: auto;
+    margin: 1rem auto;
+  }
+}

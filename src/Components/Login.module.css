@@ -83,3 +83,43 @@ input {
   background-color: #b38b6d;
   box-shadow: 0px 2px 6px 4px rgba(0, 0, 0, 0.2);
 }
+
+/* Responsive Styles */
+@media (max-width: 1024px) {
+  .main {
+    flex-direction: column;
+    height: auto;
+  }
+
+  .login,
+  .signup {
+    width: 90%;
+    height: auto;
+    padding: 1rem;
+  }
+
+  .slider {
+    display: none; /* Optionally hide slider on smaller screens */
+  }
+}
+
+@media (max-width: 600px) {
+  input {
+    width: 100%;
+    height: 2.5rem;
+    font-size: 1rem;
+  }
+
+  .logbtn,
+  .swapbtn {
+    width: 80%;
+    font-size: 1rem;
+    margin: 1rem auto;
+    display: block;
+  }
+
+  .slidertitle {
+    font-size: 2.5rem;
+    margin-top: 4rem;
+  }
+}
