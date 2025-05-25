@@ -104,4 +104,33 @@ app.get("/getSharedData", (req, res) => {
   }
 });
 
+
+app.get("/getSharedDataForUser", (req, res) => {
+  if (!req.session || !req.session.userEmail) {
+    return res.status(401).json({ message: "User not logged in" });
+  }
+  try {
+    const filePath = path.join(__dirname, "track.csv");
+    if (!fs.existsSync(filePath)) {
+      return res.status(404).json({ message: "file not found" });
+    }
+    const results = [];
+    fs.createReadStream(filePath)
+      .pipe(csv())
+      .on("data", (data) => {
+        if (data.email === req.session.userEmail) {
+          results.push(data);
+        }
+      })
+      .on("end", () => {
+        res.json(results);
+      })
+      .on("error", (err) => {
+        res.status(500).json({ message: "Failed to read shared data" });
+      });
+  } catch (err) {
+    res.status(500).json({ message: "Failed to read shared data " });
+  }
+});
+
 module.exports = app;

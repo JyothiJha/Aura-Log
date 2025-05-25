@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Circle } from "rc-progress";
 import styles from "./Dashboard.module.css";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
@@ -13,6 +13,38 @@ function Dashboard() {
   const [selectedYear, setSelectedYear] = useState("");
   const [selectedMonth, setSelectedMonth] = useState("");
   const [selectedDate, setSelectedDate] = useState("");
+
+  const [moodStats, setMoodStats] = useState({
+    total: 0,
+    Happy: 0,
+    Sad: 0,
+    Confused: 0,
+    Angry: 0,
+  });
+
+  useEffect(() => {
+    // Fetch moods for the current session user
+    async function fetchMoodStats() {
+      try {
+        const response = await fetch("http://localhost:3000/getSharedDataForUser", {
+          credentials: "include",
+        });
+        if (!response.ok) return;
+
+        const data = await response.json();
+        // Count moods
+        const stats = { total: 0, Happy: 0, Sad: 0, Confused: 0, Angry: 0 };
+        data.forEach((entry) => {
+          stats.total += 1;
+          if (stats[entry.mood] !== undefined) stats[entry.mood] += 1;
+        });
+        setMoodStats(stats);
+      } catch (err) {
+        console.error("Failed to fetch mood stats", err);
+      }
+    }
+    fetchMoodStats();
+  }, []);
 
   const handleMoodClick = (mood) => {
     setSelectedMood(mood);
@@ -210,63 +242,63 @@ function Dashboard() {
               <div className={styles.total}>
                 <div className={styles.totalprog} data-tag="Total Mood Entries">
                   <Circle
-                    percent={100}
+                    percent={moodStats.total > 0 ? 100 : 0}
                     strokeWidth={6}
                     strokeColor={"greenyellow"}
                     strokeLinecap="square"
                     trailWidth={6}
                     trailColor="black"
                   />
-                  <h3>Total input</h3>
+                  <h3>Total input: {moodStats.total}</h3>
                 </div>
               </div>
               <div className={styles.allprog}>
                 <div className={styles.prog}>
                   <div className={styles.cbar} data-tag="Happy">
                     <Circle
-                      percent={40}
+                      percent={moodStats.Happy > 0 ? (moodStats.Happy / moodStats.total) * 100 : 0}
                       strokeWidth={6}
                       strokeColor={"greenyellow"}
                       strokeLinecap="square"
                       trailWidth={6}
                       trailColor="black"
                     />
-                    <p>{`Happy`}</p>
+                    <p>Happy ({moodStats.Happy})</p>
                   </div>
                   <div className={styles.cbar} data-tag="Sad">
                     <Circle
-                      percent={10}
+                      percent={moodStats.Sad > 0 ? (moodStats.Sad / moodStats.total) * 100 : 0}
                       strokeWidth={6}
                       strokeColor={"yellow"}
                       strokeLinecap="square"
                       trailWidth={6}
                       trailColor="black"
                     />
-                    <p>{`Sad`}</p>
+                    <p>Sad ({moodStats.Sad})</p>
                   </div>
                 </div>
                 <div className={styles.prog}>
                   <div className={styles.cbar} data-tag="Confused">
                     <Circle
-                      percent={30}
+                      percent={moodStats.Confused > 0 ? (moodStats.Confused / moodStats.total) * 100 : 0}
                       strokeWidth={6}
                       strokeColor={"red"}
                       strokeLinecap="square"
                       trailWidth={6}
                       trailColor="black"
                     />
-                    <p>{`Confused`}</p>
+                    <p>Confused ({moodStats.Confused})</p>
                   </div>
                   <div className={styles.cbar} data-tag="Angry">
                     <Circle
-                      percent={20}
+                      percent={moodStats.Angry > 0 ? (moodStats.Angry / moodStats.total) * 100 : 0}
                       strokeWidth={6}
                       strokeColor={"gray"}
                       strokeLinecap="square"
                       trailWidth={6}
                       trailColor="black"
                     />
-                    <p>{`Angry`}</p>
+                    <p>Angry ({moodStats.Angry})</p>
                   </div>
                 </div>
               </div>
